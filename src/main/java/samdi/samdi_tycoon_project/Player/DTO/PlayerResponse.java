@@ -1,4 +1,4 @@
-package samdi.samdi_tycoon_project.Player;
+package samdi.samdi_tycoon_project.Player.DTO;
 
 public record PlayerResponse(
         Long id,
