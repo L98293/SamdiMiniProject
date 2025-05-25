@@ -1,4 +1,4 @@
-package samdi.samdi_tycoon_project.Domain;
+package samdi.samdi_tycoon_project.Player.Domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -17,7 +17,7 @@ public class Player {
     @Column(unique = true)
     private String username;
 
-    private String money;
+    private int money;
 
     @Column(nullable = true, length = 60)
     @Min(18)
@@ -28,7 +28,7 @@ public class Player {
 
     @Column(length = 100)
     @Size(min = 0, max = 100) // 플레이어 체력의 최소는 0, 최대는 100
-    private String health;
+    private int health;
 
     private String inventory;
 }

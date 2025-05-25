@@ -1,7 +1,7 @@
-package samdi.samdi_tycoon_project;
+package samdi.samdi_tycoon_project.Player;
 
 import org.springframework.stereotype.Service;
-import samdi.samdi_tycoon_project.Domain.Player;
+import samdi.samdi_tycoon_project.Player.Domain.Player;
 import java.util.Optional;
 
 @Service
@@ -22,25 +22,16 @@ public class PlayerService {
                 .map(Player::getInventory);
         // .map(Player::getInventory): 는 람다식을 더 간단하게 사용한 것으로 람다식을 사용한다면 아래와 같다
         // .map(Player -> player.getInventory);
-
-        // map 사용시 긴 코드를 한줄로 줄일 수 있음 (Null 체크를  쉽게 할 수 있음)
-//        if (playerRepository.existsById(id)) {
-//            return Optional.of(playerRepository.findById(id).toString());
-//        } else {
-//            return Optional.empty();
-//        }
-
     }
 
-
     // 플레이어 잔고 조회
-    public Optional<String> getMoneyByPlayerID(Long id) {
+    public Optional<Integer> getMoneyByPlayerID(Long id) {
         return playerRepository.findById(id)
                 .map(Player::getMoney);
     }
 
     // 플레이어 체력 조회
-    public Optional<String> getHealableByPlayerID(Long id) {
+    public Optional<Integer> getHealableByPlayerID(Long id) {
         return playerRepository.findById(id)
                 .map(Player::getHealth);
     }
