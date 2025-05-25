@@ -1,11 +1,11 @@
 package samdi.samdi_tycoon_project.Player.DTO;
 
-public record PlayerRequest(
+public record CreatePlayerRequest(
         String username,
-        String gender,
         int money,
         int age,
-        int health
-
+        String gender,
+        int health,
+        String inventory
 ) {
 }

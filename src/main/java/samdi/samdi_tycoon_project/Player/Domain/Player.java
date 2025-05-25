@@ -5,9 +5,15 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity
+@SuperBuilder
 @Data // Lombok 어노테이션, 자동으로 @Getter와, @Setter, toString 생성
+@NoArgsConstructor
+@Table(name = "players")
+
 public class Player {
 
     @Id
@@ -27,7 +33,8 @@ public class Player {
     private String gender; // 이 세상에 성별은 단 두개 뿐임(남성과 여성)
 
     @Column(length = 100)
-    @Size(min = 0, max = 100) // 플레이어 체력의 최소는 0, 최대는 100
+    @Min(0)
+    @Max(100)// 플레이어 체력의 최소는 0, 최대는 100
     private int health;
 
     private String inventory;

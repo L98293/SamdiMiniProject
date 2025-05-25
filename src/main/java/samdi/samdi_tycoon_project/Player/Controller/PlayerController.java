@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import samdi.samdi_tycoon_project.Player.DTO.CreatePlayerRequest;
 import samdi.samdi_tycoon_project.Player.Domain.Player;
 import samdi.samdi_tycoon_project.Player.PlayerRepository;
 import samdi.samdi_tycoon_project.Player.PlayerService;
@@ -32,12 +33,9 @@ public class PlayerController {
 
     // 플레이어 생성
     @PostMapping
-    public String createPlayer(@RequestBody Player player) {
-        return playerRepository.save(player).toString();
+    public void createPlayer(@RequestBody CreatePlayerRequest request) {
+        playerService.createPlayer(request);
     }
-
-    @PatchMapping("/{id}")
-
 
     @GetMapping("/inventory/{id}")
     public String getInventory(@PathVariable Long id) {

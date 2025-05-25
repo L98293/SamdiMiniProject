@@ -1,6 +1,7 @@
 package samdi.samdi_tycoon_project.Player;
 
 import org.springframework.stereotype.Service;
+import samdi.samdi_tycoon_project.Player.DTO.CreatePlayerRequest;
 import samdi.samdi_tycoon_project.Player.Domain.Player;
 import java.util.Optional;
 
@@ -10,6 +11,26 @@ public class PlayerService {
     // 의존성 주입
     // final은 한 번 주입된 후에 변경되지 않도록 함
     private final PlayerRepository playerRepository;
+
+    public void createPlayer(CreatePlayerRequest request) {
+        Player p = playerRepository.findByUsername(request.username()).orElse(null);
+
+        if (request.age() < 19 || request.age() > 60) {
+            throw new IllegalArgumentException("개인 사업자를 가질 수 없는 나이 입니다.");
+        }
+        if (request.health() < 0 || request.health() > 100) {
+            throw new IllegalArgumentException("존재할 수 없습니다.");
+        }
+
+        Player player = Player.builder()
+                .username(request.username())
+                .age(request.age())
+                .health(request.health())
+                .money(request.money())
+                .build();
+
+        playerRepository.save(player);
+    }
 
     // Repository 주입
     public PlayerService(PlayerRepository playerRepository) {
