@@ -2,10 +2,15 @@ package samdi.samdi_tycoon_project.Building.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import samdi.samdi_tycoon_project.Player.Domain.Player;
 
 @Entity
 @Data
+@SuperBuilder
+@NoArgsConstructor
+@Table (name = "buildings")
 public class Building {
 
     @Id
