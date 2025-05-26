@@ -1,10 +1,11 @@
 package samdi.samdi_tycoon_project.Player;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@ControllerAdvice
+// 전역 예외처리
+@RestControllerAdvice
 public class PlayerExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handle(IllegalArgumentException ex) {

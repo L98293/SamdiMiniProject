@@ -7,6 +7,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import samdi.samdi_tycoon_project.Building.Domain.Building;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @SuperBuilder
@@ -38,4 +42,7 @@ public class Player {
     private int health;
 
     private String inventory;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Building> buildings = new ArrayList<>();
 }

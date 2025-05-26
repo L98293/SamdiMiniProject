@@ -22,7 +22,7 @@ public class PlayerService {
 
         // 그니까 왜 이게 실행이 안되고 500이 뜨는거지
         if (request.age() < 19 || request.age() > 60) {
-            throw new IllegalArgumentException("개인 사업자를 가질 수 없는 나이 입니다.");
+            throw new IllegalArgumentException("개인 사업자 혹은 법인을 가질 수 없는 나이 입니다.");
         }
         if (request.health() < 0 || request.health() > 100) {
             throw new IllegalArgumentException("존재할 수 없습니다.");
