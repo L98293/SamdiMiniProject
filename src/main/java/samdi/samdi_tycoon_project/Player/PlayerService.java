@@ -57,7 +57,7 @@ public class PlayerService {
     }
 
     // 플레이어 체력 조회
-    public Optional<Integer> getHealableByPlayerID(Long id) {
+    public Optional<Integer> getHealthByPlayerID(Long id) {
         return playerRepository.findById(id)
                 .map(Player::getHealth);
     }

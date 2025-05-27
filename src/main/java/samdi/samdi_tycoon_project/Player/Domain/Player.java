@@ -3,11 +3,10 @@ package samdi.samdi_tycoon_project.Player.Domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import samdi.samdi_tycoon_project.Building.Domain.Building;
+import samdi.samdi_tycoon_project.Things.Domain.Things;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +43,5 @@ public class Player {
     private String inventory;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Building> buildings = new ArrayList<>();
+    private List<Things> buildings = new ArrayList<>();
 }

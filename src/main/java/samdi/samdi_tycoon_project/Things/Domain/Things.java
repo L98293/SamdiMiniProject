@@ -1,4 +1,4 @@
-package samdi.samdi_tycoon_project.Building.Domain;
+package samdi.samdi_tycoon_project.Things.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,17 +10,16 @@ import samdi.samdi_tycoon_project.Player.Domain.Player;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-@Table (name = "buildings")
-public class Building {
+@Table (name = "things")
+public class Things {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String buildingName;
-    private String buildingDescription;
-    private String buildingType;
-    private int buildingPrice;
+    private String thingsName;
+    private String thingsDescription;
+    private int thingsPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id")

@@ -1,7 +1,6 @@
 package samdi.samdi_tycoon_project.Player.Controller;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import samdi.samdi_tycoon_project.Player.DTO.CreatePlayerRequest;
@@ -37,6 +36,7 @@ public class PlayerController {
         playerService.createPlayer(request);
     }
 
+    // 플레이어 인벤토리 조회
     @GetMapping("/inventory/{id}")
     public String getInventory(@PathVariable Long id) {
         return playerService.getInventoryByPlayerId(id)
@@ -57,7 +57,7 @@ public class PlayerController {
 
     @GetMapping("/health/{id}")
     public ResponseEntity<?> getHealth(@PathVariable Long id) {
-        return playerService.getHealableByPlayerID(id)
+        return playerService.getHealthByPlayerID(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(()
                         -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
