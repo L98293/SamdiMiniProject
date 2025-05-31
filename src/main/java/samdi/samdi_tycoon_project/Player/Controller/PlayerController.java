@@ -3,6 +3,7 @@ package samdi.samdi_tycoon_project.Player.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import samdi.samdi_tycoon_project.Player.DTO.BuyThingsRequest;
 import samdi.samdi_tycoon_project.Player.DTO.CreatePlayerRequest;
 import samdi.samdi_tycoon_project.Player.Domain.Player;
 import samdi.samdi_tycoon_project.Player.PlayerRepository;
@@ -23,6 +24,17 @@ public class PlayerController {
     public String deafultPlayers() {
         return "플레이어 정보를 확인 하려면 /inventory/{id}로 접근하세요.";
     }
+
+    @PostMapping("/buy/{id}")
+    public ResponseEntity<?> buyThings(@PathVariable Long id, @RequestBody BuyThingsRequest request) {
+        playerService.buyThings(
+                request.getPlayerId(),
+                id,
+                request.getQuantity()
+        );
+        return ResponseEntity.ok("구매 완료");
+    }
+
 
     @GetMapping("/{id}")
     public Player getPlayerById(@PathVariable Long id) {

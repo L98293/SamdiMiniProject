@@ -6,10 +6,6 @@ import jakarta.validation.constraints.Min;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import samdi.samdi_tycoon_project.Things.Domain.Things;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @SuperBuilder
@@ -26,22 +22,19 @@ public class Player {
     @Column(unique = true)
     private String username;
 
-    private int money;
+    private Integer playerMoney;
 
     @Column(nullable = true, length = 60)
     @Min(18)
     @Max(60)// tmi: 우리나라에서 개인 사업자를 만들기 위해서는 만 19세 이상이고, 정년은 만 60세이다.
-    private int age;
+    private Integer playerAge;
 
-    private String gender; // 이 세상에 성별은 단 두개 뿐임(남성과 여성)
+    private String playerGender; // 이 세상에 성별은 단 두개 뿐임(남성과 여성)
 
     @Column(length = 100)
     @Min(0)
     @Max(100)// 플레이어 체력의 최소는 0, 최대는 100
-    private int health;
+    private Integer playerHealth;
 
-    private String inventory;
-
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Things> buildings = new ArrayList<>();
+    private String playerInventory;
 }

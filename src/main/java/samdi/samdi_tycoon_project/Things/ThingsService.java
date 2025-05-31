@@ -7,6 +7,7 @@ import samdi.samdi_tycoon_project.Things.Domain.Things;
 import java.util.Optional;
 
 @Service
+// 물건 만드는 코드
 public class ThingsService {
     private final ThingsRepository ThingsRepository;
 
@@ -25,29 +26,16 @@ public class ThingsService {
         }
         Things things = Things.builder()
                 .thingsName(request.thingsName())
-                .thingsDescription(request.thingsDescription())
+                .thingsQuantity(request.thingsQuantity())
                 .thingsPrice(request.thingsPrice())
                 .build();
 
-        ThingsRepository.save(things);
-    }
-
-    // 물건 조회
-    public Optional<?> getThingsByThingsId(Long id) {
-        return ThingsRepository.findById(id)
-                .map(Things::getThingsName);
+          ThingsRepository.save(things);
     }
 
     // 물건 가격 조회
     public Optional<?> getThingsPriceByThingsId(Long id) {
         return ThingsRepository.findById(id)
                 .map(Things::getThingsPrice);
-    }
-
-    // 물건 설명 조회(?)
-    // 왜 물건에 설명이 있는지는 모르겠지만 일단은 만들었으니까 ^^
-    public Optional<?> getThingsDescriptionByThingsId(Long id) {
-        return ThingsRepository.findById(id)
-                .map(Things::getThingsDescription);
     }
 }
