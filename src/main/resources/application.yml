@@ -3,7 +3,7 @@ spring:
     name: Samdi_Tycoon_Project
 
   datasource:
-    url: jdbc:mysql://localhost:3306/Private
+    url: jdbc:mysql://localhost:3306/private
     username: Private
     password: Private
     driver-class-name: com.mysql.cj.jdbc.Driver
