@@ -3,9 +3,9 @@ spring:
     name: Samdi_Tycoon_Project
 
   datasource:
-    url: jdbc:mysql://localhost:3306/samdi_tycoon_db
-    username: samdiMiniProject
-    password: Qwer1234!
+    url: jdbc:mysql://localhost:3306/????
+    username: Null
+    password: Null
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
