@@ -22,7 +22,7 @@ public class ThingsController {
 
     @GetMapping
     public String deafultThings() {
-        return "현재 존재하는 물건(상품명)을 조회하려면 /things/{id}경로로 접속하세요";
+        return "현재 존재하는 물건(상품명)을 조회하려면 /{id}경로로 접속하세요";
     }
 
     // 상품 생성

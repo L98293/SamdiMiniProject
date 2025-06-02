@@ -39,7 +39,7 @@ public class PlayerService {
 
         int totalPrice = things.getThingsPrice() * quantity;
 
-        if (things.getThingsQuantity() <= quantity) {
+        if (things.getThingsQuantity() < quantity) {
             throw new IllegalArgumentException("재고가 부족합니다.");
         }
         if (player.getPlayerMoney() < totalPrice) {
@@ -55,6 +55,7 @@ public class PlayerService {
         if (inventoryItemOpt.isPresent()) {
             InventoryItem inventoryItem = inventoryItemOpt.get();
             inventoryItem.setQuantity(inventoryItem.getQuantity() + quantity);
+            inventoryRepository.save(inventoryItem);
         }
         else {
             InventoryItem newItem = InventoryItem.builder()

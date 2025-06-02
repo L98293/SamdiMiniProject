@@ -59,7 +59,7 @@ public class PlayerController {
                 .orElseGet(()
                         -> ResponseEntity.status(HttpStatus.NOT_FOUND).build()); // 값이 없으면 404 not found
     }
-    // ResponseEntity<Integer>안에 money라는 값이 존재하면 ResponseEntitiy::ok, 없으면 HttpStatus.NOT_FOUND
+    // ResponseEntity<Integer>안에 money라는 값이 존재하면 ResponseEntitiy::ok(200 OK), 없으면 HttpStatus.NOT_FOUND(404 NOT FOUND)
 
 
     @GetMapping("/health/{id}")
